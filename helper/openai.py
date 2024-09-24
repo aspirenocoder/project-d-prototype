@@ -8,7 +8,7 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_KEY")
 )
 
-options = ["Standard English to ISL English", "ISL English to Standard English"]
+options = ["ISL English to Standard English"]
 
 prompt = """1.eg : tom helped her with the project
 
@@ -56,19 +56,19 @@ colour you favorite what
 
 def response(text, option):
 
-    if option == options[0]:
-        respon = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": f"Your work is to translate grammatically correct English to deaf person's English. you'll use the formula and give answer as a response\n {prompt} \n only return answer dont return any formula or unnecessary content",
-                },
-                {"role": "user", "content": f"{text}"},
-            ],
-        )
+    # if option == options[0]:
+    #     respon = client.chat.completions.create(
+    #         model="gpt-4o-mini",
+    #         messages=[
+    #             {
+    #                 "role": "system",
+    #                 "content": f"Your work is to translate grammatically correct English to deaf person's English. you'll use the formula and give answer as a response\n {prompt} \n only return answer dont return any formula or unnecessary content",
+    #             },
+    #             {"role": "user", "content": f"{text}"},
+    #         ],
+    #     )
 
-    elif option == options[1]:
+    if option == options[0]:
         respon = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -85,15 +85,15 @@ def response(text, option):
     completion_tokens = respon.usage.completion_tokens
     total_tokens = respon.usage.total_tokens
 
+    # if option == options[0]:
+    #     insert(
+    #         text,
+    #         content,
+    #         prompt_tokens,
+    #         completion_tokens,
+    #         total_tokens,
+    #     )
     if option == options[0]:
-        insert(
-            text,
-            content,
-            prompt_tokens,
-            completion_tokens,
-            total_tokens,
-        )
-    elif option == options[1]:
         dinsert(
             text,
             content,
