@@ -7,7 +7,7 @@ with st.form("user_inputs"):
     # options = [ "ISL English to Standard English"]
     # selected_option = st.selectbox("Select an option:", options)
     # st.write(f"You selected: {selected_option}"
-    st.title("ISL English to Standard English")
+    st.header("ISL English to Standard English")
     text = st.text_input("Enter text")
 
     button = st.form_submit_button("Submit")
