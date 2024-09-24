@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+import uuid
 load_dotenv()
 client = MongoClient(
     os.environ.get("MONGO_URL")
@@ -17,7 +18,7 @@ tt = 14
 
 collection.insert_one(
     {
-        "user_id": "Vaasa",
+        "user_id": str(uuid.uuid4()),
         "Duser_text": text,
         "AI_response": airesp,
         "input_tokens": ipt,

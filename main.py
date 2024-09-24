@@ -4,7 +4,7 @@ from helper.openai import response
 st.title("AuralApp")
 
 with st.form("user_inputs"):
-    options = ["Standard English to ISL English", "ISL English to Standard English"]
+    options = [ "ISL English to Standard English"]
     selected_option = st.selectbox("Select an option:", options)
     # st.write(f"You selected: {selected_option}"
     text = st.text_input("Enter text")

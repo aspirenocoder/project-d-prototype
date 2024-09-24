@@ -2,6 +2,7 @@ from pymongo import MongoClient
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+import uuid
 load_dotenv()
 
 
@@ -28,7 +29,7 @@ def insert(text, airesp, ipt, opt, tt):
     try:
         collection.insert_one(
             {
-                "user_id": "Vaasa",
+                "user_id": str(uuid.uuid4()),
                 "user_text": text,
                 "AI_response": airesp,
                 "input_tokens": ipt,
@@ -47,7 +48,7 @@ def dinsert(text, airesp, ipt, opt, tt):
     try:
         Dcollection.insert_one(
             {
-                "user_id": "Vaasa",
+                "user_id": str(uuid.uuid4()),
                 "Duser_text": text,
                 "AI_response": airesp,
                 "input_tokens": ipt,
