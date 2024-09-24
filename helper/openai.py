@@ -54,7 +54,7 @@ colour you favorite what
 """
 
 
-def response(text, option):
+def response(text):
 
     # if option == options[0]:
     #     respon = client.chat.completions.create(
@@ -68,17 +68,17 @@ def response(text, option):
     #         ],
     #     )
 
-    if option == options[0]:
-        respon = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "Your work is to translate deaf person's babble English to grammatically correct English.",
-                },
-                {"role": "user", "content": f"{text}"},
-            ],
-        )
+    # if option == options[0]:
+    respon = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "Your work is to translate deaf person's babble English to grammatically correct English.",
+            },
+            {"role": "user", "content": f"{text}"},
+        ],
+    )
         # Accessing the content of the response
     content = respon.choices[0].message.content
     prompt_tokens = respon.usage.prompt_tokens
@@ -93,12 +93,12 @@ def response(text, option):
     #         completion_tokens,
     #         total_tokens,
     #     )
-    if option == options[0]:
-        dinsert(
-            text,
-            content,
-            prompt_tokens,
-            completion_tokens,
-            total_tokens,
-        )
+    # if option == options[0]:
+    dinsert(
+        text,
+        content,
+        prompt_tokens,
+        completion_tokens,
+        total_tokens,
+    )
     return respon

@@ -15,7 +15,7 @@ with st.form("user_inputs"):
     if button and text:
         try:
             # Call the response function from helper.openai
-            resp = response(text, selected_option)
+            resp = response(text)
             st.write(resp.choices[0].message.content)
         except Exception as e:
             st.error(f"An error occurred: {e}")
